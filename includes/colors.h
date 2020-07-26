@@ -1,0 +1,14 @@
+#ifndef COLORS_H
+#define COLORS_H
+
+# define TEXT_COLOR			0xFFFFFF
+# define BCKGRND			0x333333
+# define MENU_BCKGRND		0x669999
+
+# define COLOR_DISCO		0x3CCCCC
+# define COLOR_BRICK_RED	0x00FF00
+# define COLOR_FLAMINGO		0x666633
+# define COLOR_JAFFA		0xCC6600
+# define COLOR_SAFFRON		0x663300
+
+#endif

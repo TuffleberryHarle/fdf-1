@@ -81,8 +81,8 @@ add_executable(fdf_1
     srcs/drawer.c
     srcs/extra_1.c
     srcs/extra_2.c
-    srcs/initislizer.c
+        srcs/initializer.c
     srcs/main.c
     srcs/projector.c
     srcs/reader.c
-    srcs/stack_handler.c srcs/keys_n_buttons.c srcs/alter.c srcs/mouse_handler.c)
+    srcs/stack_handler.c srcs/keys_n_buttons.c srcs/alter.c srcs/mouse_handler.c includes/colors.h includes/keys.h)

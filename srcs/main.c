@@ -32,6 +32,9 @@ int		main(int argc, char **argv) {
         stack_to_arrays(&coords_stack, map);
         fdf->camera = camera_initializer(fdf);
         drawer(fdf->map, fdf);
+        key_handler(fdf);
+        mlx_loop(fdf->mlx);
     }
+    terminator(ERR_USAGE);
     return (0);
 }

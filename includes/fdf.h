@@ -17,6 +17,7 @@
 #include "err_msg.h"
 #include "includes/libft.h"
 #include "../minilibx_macos/mlx.h"
+#include "color.h"
 #include "math.h"
 #include <errno.h>
 #include <fcntl.h>
@@ -121,7 +122,6 @@ typedef struct			s_fdf
 # define FT_INT_MAX		((int)(FT_UINT_MAX >> 1))
 # define FT_INT_MIN		((int)(~FT_INT_MAX))
 
-# define COLOR_H
 
 # define TEXT_COLOR			0xFFFFFF
 # define BCKGRND			0x333333
@@ -132,6 +132,51 @@ typedef struct			s_fdf
 # define COLOR_FLAMINGO		0x666633
 # define COLOR_JAFFA		0xCC6600
 # define COLOR_SAFFRON		0x663300
+
+
+# define ESC		53
+# define I			34
+# define P			35
+# define MAIN_PAD_0			29
+# define MAIN_1			18
+# define MAIN_2			19
+# define MAIN_3			20
+# define MAIN_4			21
+# define MAIN_PAD_5			23
+# define MAIN_6			22
+# define MAIN_7			26
+# define MAIN_8			28
+# define MAIN_9			25
+# define PLUS		24
+# define MINUS		27
+# define LESS		43
+# define MORE		47
+
+# define NUM_PAD_0			82
+# define NUM_1			83
+# define NUM_2			84
+# define NUM_3			85
+# define NUM_4			86
+# define NUM_PAD_5			87
+# define NUM_6			88
+# define NUM_7			89
+# define NUM_8			91
+# define NUM_9			92
+# define NUM_PLUS		69
+# define NUM_MINUS		78
+
+# define UP			126
+# define DOWN			125
+# define LEFT			123
+# define RIGHT		124
+
+# define MOUSE_LEFT	1
+# define MOUSE_RIGHT_BUTTON	2
+# define MOUSE_THIRD_BUTTON	3
+# define WHEEL_UP	4
+# define WHEEL_DOWN	5
+# define MOUSE_SCROLL_LEFT	6
+# define MOUSE_SCROLL_RIGHT	7
 
 void	terminator(char *s);
 t_map		*map_initializer(void);
@@ -149,5 +194,14 @@ t_point		projector(t_point p, t_fdf *fdf);
 t_point	point_creator(int x, int y, t_map *map);
 int	color_setting(int z, t_map *map);
 double	determ(int start, int end, int curr);
+void	key_handler(t_fdf *fdf);
+void	zoom(int key, t_fdf *fdf);
+void	move(int key, t_fdf *fdf);
+void	rotate(int key, t_fdf *fdf);
+void	flatten(int key, t_fdf *fdf);
+void	proj_switch(int key, t_fdf *fdf);
+int			mouse_down(int button, int x, int y, void *param);
+int			mouse_up(int button, int x, int y, void *param);
+int			mouse_moving(int x, int y, void *param);
 
 #endif

@@ -15,8 +15,8 @@
 # define FDF_H
 
 #include "err_msg.h"
-#include "includes/libft.h"
-#include "../minilibx_macos/mlx.h"
+#include "libft.h"
+#include "mlx.h"
 #include "colors.h"
 #include "keys.h"
 #include "math.h"

@@ -1,7 +1,7 @@
 NAME = fdf
 
-CC = gcc
-FLAGS = -Wall -Werror -Wextra -O3
+GCC = gcc
+FLAGS = -Wall -Werror -Wextra
 
 LIBS = -lmlx -lm -lft -L$(LIBFT_DIR) -L$(MINILIBX_DIR) -framework OpenGL -framework AppKit
 INCS = -I$(H_DIR) -I$(LIBFT_H) -I$(MINILIBX_H)
@@ -15,28 +15,26 @@ MINILIBX_DIR = ./minilibx_macos/
 MINILIBX_H = $(MINILIBX_DIR)
 
 H_LIST = fdf.h\
-	color.h\
-	key_macos.h\
-	error_message.h
+	colors.h\
+	keys.h\
+	err_msg.h
 H_DIR = ./includes/
 H = $(addprefix $(H_DIR), $(H_LIST))
 
 SRCS_DIR = ./sources/
 SRCS_LIST = main.c\
-	colour.c\
-	controls.c\
-	converter.c\
-	draw.c\
-	initializations.c\
-	keyboard.c\
-	map_reader.c\
-	menu.c\
-	mouse.c\
-	options.c\
-	other_funcs_1.c\
-	other_funcs_2.c\
-	projections.c\
-	stack_reader.c
+	colorer.c\
+    drawer.c\
+    extra_1.c\
+    extra_2.c\
+    initializer.c\
+    projector.c\
+    reader.c\
+    stack_handler.c\
+    keys_n_buttons.c\
+    alter.c\
+    mouse_handler.c
+
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_LIST))
 
 OBJ_DIR = objects/
@@ -54,7 +52,7 @@ RESET = \033[0m
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(MINILIBX) OBJ_DIR OBJ
-	@$(CC) $(FLAGS) $(LIBS) $(INCS) $(OBJ) -o $(NAME)
+	@$(GCC) $(FLAGS) $(LIBS) $(INCS) $(OBJ) -o $(NAME)
 	@echo "\n$(NAME): $(GREEN)object files have been created$(RESET)"
 	@echo "$(NAME): $(GREEN)$(NAME)'s been created$(RESET)"
 
@@ -63,7 +61,7 @@ $(OBJ_DIR):
 	@echo "$(NAME): $(GREEN)$(OBJ_DIR)'s been created$(RESET)"
 
 $(OBJ_DIR)%.o : SRCS_DIR%.c H
-	@$(CC) $(FLAGS) -c $(INCS) $< -o $@
+	@$(GCC) $(FLAGS) -c $(INCS) $< -o $@
 	@echo "$(GREEN).$(RESET)\c"
 
 $(LIBFT):

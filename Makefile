@@ -21,7 +21,7 @@ H_LIST = fdf.h\
 H_DIR = ./includes/
 H = $(addprefix $(H_DIR), $(H_LIST))
 
-SRCS_DIR = ./sources/
+SRCS_DIR = ./srcs/
 SRCS_LIST = main.c\
 	colorer.c\
     drawer.c\
@@ -51,7 +51,7 @@ RESET = \033[0m
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(MINILIBX) OBJ_DIR OBJ
+$(NAME): $(LIBFT) $(MINILIBX) $(OBJ_DIR) $(OBJ)
 	@$(GCC) $(FLAGS) $(LIBS) $(INCS) $(OBJ) -o $(NAME)
 	@echo "\n$(NAME): $(GREEN)object files have been created$(RESET)"
 	@echo "$(NAME): $(GREEN)$(NAME)'s been created$(RESET)"
@@ -60,7 +60,7 @@ $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 	@echo "$(NAME): $(GREEN)$(OBJ_DIR)'s been created$(RESET)"
 
-$(OBJ_DIR)%.o : SRCS_DIR%.c H
+$(OBJ_DIR)%.o : $(SRCS_DIR)%.c $(H)
 	@$(GCC) $(FLAGS) -c $(INCS) $< -o $@
 	@echo "$(GREEN).$(RESET)\c"
 

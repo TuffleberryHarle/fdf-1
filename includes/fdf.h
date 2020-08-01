@@ -90,7 +90,7 @@ typedef struct			s_camera
  * img_ptr the image
  * mlx_get_data_addr() returns information about the created image, allowing a user to modify it later
  * bits_per_pixel will be filled with the number of bits needed to represent a pixel color (also called the depth of the image)
- * size_line is the number of bytes used to store one line of the image in memory. This information is needed to move from one line to another in the image
+ * line_size is the number of bytes used to store one line of the image in memory. This information is needed to move from one line to another in the image
  * endian tells you whether the pixel color in the image needs to be stored in little endian (endian == 0), or big endian (endian == 1)
  */
 typedef struct			s_fdf
@@ -100,7 +100,7 @@ typedef struct			s_fdf
     void				*img;
     char				*data_addr;
     int					bits_per_pixel;
-    int					size_line;
+    int					line_size;
     int					endian;
     t_camera			*camera;
     t_map				*map;
@@ -110,6 +110,9 @@ typedef struct			s_fdf
 # define WIN_WIDTH  1024
 # define WIN_HEIGHT 720
 # define MENU_WIDTH 250
+# define MASK 0xFF
+# define SHIFT_RED 16
+# define SHIFT_GREEN 8
 # define FT_MIN(A, B) (((A) < (B)) ? (A) : (B))
 # define FT_MAX(A, B) (((A) > (B)) ? (A) : (B))
 
@@ -144,5 +147,7 @@ void	proj_switch(int key, t_fdf *fdf);
 int			mouse_down(int button, int x, int y, void *param);
 int			mouse_up(int button, int x, int y, void *param);
 int			mouse_moving(int x, int y, void *param);
+static void	dot_putting(t_fdf *fdf, int x, int y, int color);
+int	color_getting(t_point cur, t_point start, t_point end, t_point diff);
 
 #endif

@@ -25,28 +25,28 @@ void	options_displayer(t_fdf *fdf)
 
 static void	trace_drawing(t_point f, t_point s, t_fdf *fdf)
 {
-    t_point	delta;
+    t_point	diff;
     t_point	sign;
     t_point	cur;
     int		error[2];
 
-    delta.x = FT_ABS(s.x - f.x);
-    delta.y = FT_ABS(s.y - f.y);
-    sign.x = f.x < s.x ? 1 : -1;
-    sign.y = f.y < s.y ? 1 : -1;
-    error[0] = delta.x - delta.y;
+	diff.x = FT_ABS(s.x - f.x);
+	diff.y = FT_ABS(s.y - f.y);
+    sign.x = (f.x < s.x) ? 1 : -1;
+    sign.y = (f.y < s.y) ? 1 : -1;
+    error[0] = diff.x - diff.y;
     cur = f;
     while (cur.x != s.x || cur.y != s.y)
     {
-        put_pixel(fdf, cur.x, cur.y, get_color(cur, f, s, delta));
-        if ((error[1] = error[0] * 2) > -delta.y)
+		dot_putting(fdf, cur.x, cur.y, color_getting(cur, f, s, diff));
+        if ((error[1] = error[0] * 2) > -diff.y)
         {
-            error[0] -= delta.y;
+            error[0] -= diff.y;
             cur.x += sign.x;
         }
-        if (error[1] < delta.x)
+        if (error[1] < diff.x)
         {
-            error[0] += delta.x;
+            error[0] += diff.x;
             cur.y += sign.y;
         }
     }

@@ -251,7 +251,7 @@ void	*mlx_int_parse_xpm(mlx_ptr_t *xvar,void *info,int info_size,char *(*f)())
 	  mlx_int_xpm_set_pixel(img, data, opp, col, x);
 	  x ++;
 	}
-      //      data += img->size_line;
+      //      data += img->line_size;
       data += img->width*4;
     }
   /*

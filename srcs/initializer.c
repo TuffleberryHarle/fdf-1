@@ -29,7 +29,7 @@ t_fdf		*fdf_initializer(t_map *map)
     if (!(fdf->img = mlx_new_image(fdf->mlx, WIN_WIDTH, WIN_HEIGHT)))
         terminator(ERR_FDF_INIT);
     fdf->data_addr = mlx_get_data_addr(fdf->img, &(fdf->bits_per_pixel),
-                                       &(fdf->size_line), &(fdf->endian));
+									   &(fdf->line_size), &(fdf->endian));
     fdf->map = map;
     if (!(fdf->mouse = (t_mouse *)ft_memalloc(sizeof(t_mouse))))
         terminator(ERR_FDF_INIT);

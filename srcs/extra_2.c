@@ -1,5 +1,18 @@
 #include "../includes/fdf.h"
 
+static void	dot_putting(t_fdf *fdf, int x, int y, int color)
+{
+	int		i;
+
+	if (x >= MENU_WIDTH && x < WIN_WIDTH && y >= 0 && y < WIN_HEIGHT)
+	{
+		i = (x * fdf->bits_per_pixel / 8) + (y * fdf->line_size);
+		fdf->data_addr[i++] = color;
+		fdf->data_addr[i++] = color >> SHIFT_GREEN;
+		fdf->data_addr[i] = color >> SHIFT_RED;
+	}
+}
+
 double	determ(int start, int end, int curr)
 {
 	double	location;
